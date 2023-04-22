@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/item_image"
+        android:layout_width="105dp"
+        android:layout_height="150dp"
+        android:layout_margin="8dp"
+        android:padding="10sp">
+
+    </ImageView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_drink1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="27dp"
+            android:fontFamily="@font/playfair_display"
+            android:text="Название"
+            android:textColor="#323232"
+            android:textSize="15sp">
+
+        </TextView>
+
+        <TextView
+            android:id="@+id/item_ml"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:fontFamily="@font/playfair_display"
+            android:text="Количество"
+            android:textColor="#323232"
+            android:textSize="16sp" />
+    </LinearLayout>
+
+</LinearLayout>
+
+
+

@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Practice6</string>
+    <string name="notification_text">Вам пришло уведомление!</string>
+    <string name="open_in_window">Открыть в окне</string>
+    <string name="number">Ваша норма воды в день:</string>
+    <string name="header2">2000 мл</string>
+    <string name="rating_text">Оценка:</string>
+    <string name="my_text_field_hint">Цель на день: </string>
+    <string name="my_text_field_hint2">2000</string>
+    <string name="my_text_field_hint3">Выполнено:</string>
+    <string name="my_text_field_hint4">1200</string>
+    <string name="my_text_field_hint5">Вы на пути к цели!</string>
+    <string name="my_text_field_hint6">День 1</string>
+    <string name="todo">TODO</string>
+    <string name="todo2">TODO</string>
+    <string name="name">Name</string>
+    <string name="closeactivity">CloseActivity</string>
+    <string name="complete">Готово</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="Drinks2">Неутоляющие жажду</string>
+    <string name="drinks1">Утоляющие жажду</string>
+    <string name="drink">Напиток</string>
+    <string name="Water">Вода</string>
+    <string name="Do">Выпить</string>
+    <string name="Back">Назад</string>
+</resources>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/profile_fragment">
+    <fragment android:id="@+id/profile_fragment"
+        android:name="com.example.myapplication110.ui.fragments.ProfileFragment"
+        android:label="Screen One"
+        tools:layout ="@layout/screen1">
+        <action
+            android:id="@+id/action_profile_fragment_to_drinks2_list_fragment"
+            app:destination="@id/drinks2_list_fragment" />
+        <action
+            android:id="@+id/action_profile_fragment_to_drinks1_list_fragment"
+            app:destination="@id/drinks1_list_fragment" />
+    </fragment>
+    <fragment android:id="@+id/drinks2_list_fragment"
+        android:name="com.example.myapplication110.ui.fragments.Drinks2ListFragment"
+        android:label="Screen Four"
+        tools:layout ="@layout/drinks2_list" >>
+        <action
+            android:id="@+id/action_drinks2_list_fragment_to_single_drinks2_fragment"
+            app:destination="@id/single_drinks2_fragment" />
+        <action
+            android:id="@+id/action_drinks2_list_fragment_to_profile_fragment"
+            app:destination="@id/profile_fragment" />
+        <action
+            android:id="@+id/action_drinks2_list_fragment_to_new_drinks2_fragment"
+            app:destination="@id/new_drinks2_fragment" />
+    </fragment>
+    <fragment android:id="@+id/drinks1_list_fragment"
+        android:name="com.example.myapplication110.ui.fragments.Drinks1ListFragment"
+        android:label="Screen Five"
+        tools:layout ="@layout/drinks1_list" >>
+        <action
+            android:id="@+id/action_drinks1_list_fragment_to_single_drinks1_fragment"
+            app:destination="@id/single_drinks1_fragment" />
+        <action
+            android:id="@+id/action_drinks1_list_fragment_to_profile_fragment"
+            app:destination="@id/profile_fragment" />
+        <action
+            android:id="@+id/action_drinks1_list_fragment_to_new_drinks1_fragment"
+            app:destination="@id/new_drinks1_fragment" />
+    </fragment>
+    <fragment android:id="@+id/single_drinks2_fragment"
+        android:name="com.example.myapplication110.ui.fragments.SingleDrinks2Fragment"
+        android:label="Single Book"
+        tools:layout ="@layout/screen3" >
+        <action
+            android:id="@+id/action_single_drinks2_fragment_to_drinks2_list_fragment"
+            app:destination="@id/drinks2_list_fragment" />
+    </fragment>
+    <fragment android:id="@+id/single_drinks1_fragment"
+        android:name="com.example.myapplication110.ui.fragments.SingleDrinks1Fragment"
+        android:label="Single Author"
+        tools:layout ="@layout/drinks1_info" >
+        <action
+            android:id="@+id/action_single_drinks1_fragment_to_drinks1_list_fragment"
+            app:destination="@id/drinks1_list_fragment" />
+    </fragment>
+    <fragment android:id="@+id/new_drinks1_fragment"
+        android:name="com.example.myapplication110.ui.fragments.NewDrinks1Fragment"
+        android:label="New Author"
+        tools:layout ="@layout/new_drinks1_fragment" >
+        <action
+            android:id="@+id/action_new_drinks1_fragment_to_drinks1_list_fragment"
+            app:destination="@id/drinks1_list_fragment" />
+    </fragment>
+    <fragment android:id="@+id/new_drinks2_fragment"
+        android:name="com.example.myapplication110.ui.fragments.NewDrinks2Fragment"
+        android:label="New Book"
+        tools:layout ="@layout/new_drinks2_fragment" >
+
+        <action
+            android:id="@+id/action_new_drinks2_fragment_to_drinks2_list_fragment"
+            app:destination="@id/drinks2_list_fragment" />
+    </fragment>
+</navigation>
+
