@@ -139,6 +139,8 @@ public class ProfileFragment extends Fragment {
             }
 
 
+
+
         });
         binding.imagebutton2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -173,10 +175,12 @@ public class ProfileFragment extends Fragment {
             fos.write(text.getBytes());
             Toast.makeText(context, "Был создан текстовый файл в app-specific storage " + context.getDataDir().getAbsolutePath()+"/"+
                     fileName, Toast.LENGTH_SHORT).show();
-        } catch (IOException e) {throw new RuntimeException(e);}
+        }
+        catch (IOException e) {throw new RuntimeException(e);}
     }
 
     void createFileExternalStorage(String fileName, String text) {
+
         Context context = getContext();
         if (context.getApplicationContext().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
             File filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
@@ -188,6 +192,7 @@ public class ProfileFragment extends Fragment {
                 Toast.makeText(context, "Был создан текстовый файл в общем хранилище " + filePath +"/"+ fileName, Toast.LENGTH_SHORT).show();
                 outputStream.close();
             } catch (IOException e) {
+
                 e.printStackTrace();
             }
 

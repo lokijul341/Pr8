@@ -68,6 +68,7 @@ public class MyCustomListAdapter extends RecyclerView.Adapter<MyCustomListAdapte
             volume = itemView.findViewById(R.id.item_ml);
         }
     }
+
     public void updateDrinks(List<Drinks2> drinks2) {
         this.drinks2.clear();
         this.drinks2 = drinks2;
