@@ -173,8 +173,9 @@ public class ProfileFragment extends Fragment {
         Context context = getContext();
         try (FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_PRIVATE)) {
             fos.write(text.getBytes());
-            Toast.makeText(context, "Был создан текстовый файл в app-specific storage " + context.getDataDir().getAbsolutePath()+"/"+
-                    fileName, Toast.LENGTH_SHORT).show();
+
+           // Toast.makeText(context, "Был создан текстовый файл в app-specific storage " + context.getDataDir().getAbsolutePath()+"/"+
+                //    fileName, Toast.LENGTH_SHORT).show();
         }
         catch (IOException e) {throw new RuntimeException(e);}
     }
@@ -189,6 +190,7 @@ public class ProfileFragment extends Fragment {
             try {
                 outputStream = new FileOutputStream(file);
                 outputStream.write(text.getBytes());
+
                 Toast.makeText(context, "Был создан текстовый файл в общем хранилище " + filePath +"/"+ fileName, Toast.LENGTH_SHORT).show();
                 outputStream.close();
             } catch (IOException e) {
