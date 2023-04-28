@@ -21,6 +21,7 @@ public class Drinks2Repository {
 
     Drinks2RoomDatabase roomDatabase;
     public Drinks2Repository(Context applicationContext) {
+
         context = applicationContext;
         roomDatabase = Drinks2RoomDatabase.getDatabase(context);
         mDrinks2Dao = Drinks2RoomDatabase.getDatabase(context).drinks2Dao();

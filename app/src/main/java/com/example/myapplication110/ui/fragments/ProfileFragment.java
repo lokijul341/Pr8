@@ -2,7 +2,6 @@ package com.example.myapplication110.ui.fragments;
 
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -18,7 +17,6 @@ import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -30,14 +28,14 @@ import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
 
-import com.example.myapplication110.databinding.Screen1Binding;
-import com.example.myapplication110.ui.activities.MainActivity;
 import com.example.myapplication110.R;
 import com.example.myapplication110.ServiceClass;
+import com.example.myapplication110.databinding.Screen1Binding;
+import com.example.myapplication110.ui.activities.MainActivity;
+import com.example.myapplication110.ui.viewmodels.DrViewModel;
 
 import java.io.File;
 import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
 
 public class ProfileFragment extends Fragment {
@@ -64,23 +62,27 @@ public class ProfileFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        sharedPreferences = getActivity().getSharedPreferences("name",Context.MODE_PRIVATE);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
+        binding.editText.setText(DrViewModel.getUserName("user_name"));
 
-        binding.editText.setText(sharedPreferences.getString("name",null));
-
-        String text  = binding.editText.getText().toString();
         String fileName = "userName.txt";
 
-        //Запись файла в app-specific storage
-        createFileAppScecificStorage(fileName,text);
+        // app-specific storage
+        DrViewModel.addNameAppSpecific(fileName);
 
-        //Запись файла в общем хранилище
-        createFileExternalStorage(fileName,text);
+        // external storage
+        DrViewModel.addNameExternalStorage(fileName);
+
 
         binding.button6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                bundle.putString("name", binding.editText.getText().toString());
+
+                String user_name = binding.editText.getText().toString();
+
+                // sharedPreferences
+                DrViewModel.addNameSharedPreferences(user_name);
+
                 Navigation.findNavController(view).navigate(R.id.action_profile_fragment_to_drinks1_list_fragment);
             }
         });
@@ -157,53 +159,5 @@ public class ProfileFragment extends Fragment {
             }
         });
     }
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        if (requestCode == 1 && grantResults.length == 1) {
-            if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            }
-        }
-        super.onRequestPermissionsResult(
-                requestCode, permissions, grantResults
-        );
-    }
-    void createFileAppScecificStorage(String fileName, String text)
-    {
-        Context context = getContext();
-        try (FileOutputStream fos = context.openFileOutput(fileName, Context.MODE_PRIVATE)) {
-            fos.write(text.getBytes());
-
-           // Toast.makeText(context, "Был создан текстовый файл в app-specific storage " + context.getDataDir().getAbsolutePath()+"/"+
-                //    fileName, Toast.LENGTH_SHORT).show();
-        }
-        catch (IOException e) {throw new RuntimeException(e);}
-    }
-
-    void createFileExternalStorage(String fileName, String text) {
-
-        Context context = getContext();
-        if (context.getApplicationContext().checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) == PackageManager.PERMISSION_GRANTED) {
-            File filePath = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS);
-            File file = new File(filePath, fileName);
-            FileOutputStream outputStream;
-            try {
-                outputStream = new FileOutputStream(file);
-                outputStream.write(text.getBytes());
-
-                Toast.makeText(context, "Был создан текстовый файл в общем хранилище " + filePath +"/"+ fileName, Toast.LENGTH_SHORT).show();
-                outputStream.close();
-            } catch (IOException e) {
-
-                e.printStackTrace();
-            }
-
-        }
-        else {
-            ActivityCompat.requestPermissions(getActivity(), new String[] {Manifest.permission.WRITE_EXTERNAL_STORAGE},1 );
-        }
-    }
-}
-
 
 

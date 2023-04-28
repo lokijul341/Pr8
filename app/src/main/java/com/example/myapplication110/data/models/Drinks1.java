@@ -10,8 +10,9 @@ public class Drinks1 {
         this.photo = photo;
     }
 
+
     public String getName() {
-        return name;
+         return name;
     }
 
     public int getPhoto() {

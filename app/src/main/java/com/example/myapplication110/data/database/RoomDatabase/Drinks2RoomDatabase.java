@@ -31,8 +31,10 @@ public abstract class Drinks2RoomDatabase extends RoomDatabase {
                             Drinks2RoomDatabase.class, "drinks2_database")
                             .addCallback(sRoomDatabaseCallback).build();}}
         }
+
         return INSTANCE;
     }
+
 
     public static final RoomDatabase.Callback sRoomDatabaseCallback = new RoomDatabase.Callback() {
         @Override

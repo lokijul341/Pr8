@@ -10,6 +10,7 @@ public class SharedPreferencesRepository {
 
 
     public SharedPreferencesRepository(Context context) {
+
         this.sharedPreferences = context.getSharedPreferences("MY_PREFERENCE_NAME", Context.MODE_PRIVATE);
         this.editor = sharedPreferences.edit();
     }
